@@ -37,6 +37,16 @@ public class Startup : MonoBehaviour {
 		Sprite sprite2 = request.GetAsset<Sprite>();
 		Debug.LogError(sprite2);
 
+		string error = "";
+		Sprite[] arr = AssetBundleManager.GetLoadedAssetBundle(assetBundleName,out error).m_AssetBundle.LoadAssetWithSubAssets<Sprite>("assetbundlesample");
+		foreach( Sprite temp in arr)
+		{
+			sprite2 = temp;
+		}
+
+
+		sprite2 = Array.Find<Sprite>(arr, item => item.name == "assetbundlesample_0");
+
 
 		//Sprite sprite = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), Vector2.zero);
 
